@@ -16,6 +16,9 @@ data_grouped = car_data.groupby("manufactured")["type"].value_counts().reset_ind
 fig = px.bar(data_grouped, x="manufactured", y="count", color="type")
 st.plotly_chart(fig, use_container_width=True)
 
+st.header('Relationship between model year and odometer by transmission type.')
+fig = px.scatter(car_data, x="model_year", y="odometer", color="transmission", symbol="transmission")
+st.plotly_chart(fig, use_container_width=True)
 
 build_histogram = st.checkbox('Build histogram')  
 if build_histogram:
